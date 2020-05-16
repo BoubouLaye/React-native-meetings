@@ -1,28 +1,30 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
-import { LinearGradient } from 'react-native-linear-gradient';
 
-export default function HomeScreen () {
+export default function HomeScreen() {
 
-  
-    return (
 
-     <View style={styles.container}>
-          <SafeAreaView style={styles.container}>
-            <Text style={styles.titre}>Liste des Reuinions</Text>
-            <FlatList
-              data={Reuinions}
-              keyExtractor={item => item.id}
-              renderItem={({ item }) => <Item title={item.title} />}
+  return (
 
-            />
-          </SafeAreaView>
-        </View>
+
+    <View style={styles.container}>
      
+        <SafeAreaView style={styles.container}>
+         
+          <FlatList
+            data={Reuinions}
+            style={styles.liste}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <Item title={item.title} />}
+          />
+        </SafeAreaView> 
+      
+    </View>
 
 
-    );
-  
+
+  );
+
 }
 
 
@@ -30,37 +32,33 @@ export default function HomeScreen () {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30,
+    backgroundColor:'#111d4a'
 
 
   },
   item: {
-    alignItems: 'center',
-    backgroundColor: '#f2e9e4',
-    borderColor: '#5bc0be',
+    
+    backgroundColor: '#111d4a',
+    borderWidth:3,
+    borderColor: '#e63946',
     borderWidth: 1,
     padding: 10,
-    marginVertical: 3,
+    marginVertical: 4,
     marginHorizontal: 16,
-    borderRadius: 5
+    borderRadius: 7
+    
 
   },
   title: {
     fontSize: 25,
+    color:'#fff8f0'
+  },
+  liste: {
+    marginTop:15
   },
 
-  titre: {
-    color: 'black',
-    marginTop: 40,
-    marginBottom: 30,
-    fontSize: 40,
-    marginLeft: 30
-  },
-  linearGradient: {
-    flex: 1,
-
-
-  },
+ 
+  
 });
 
 
