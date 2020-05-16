@@ -1,74 +1,98 @@
-import { Ionicons } from '@expo/vector-icons';
-import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import { StyleSheet, Text,   View, TextInput, Dimensions, TouchableOpacity } from 'react-native';
+var width = Dimensions.get('window').width; //full width
 
-export default function LinksScreen() {
+
+
+export default class LinksScreen extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      isVisible : false,
+      choosenDate:''
+    }
+  }
+ 
+    
+     
+  render() {
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-      <OptionButton
-        icon="md-school"
-        label="Read the Expo documentation"
-        onPress={() => WebBrowser.openBrowserAsync('https://docs.expo.io')}
-      />
+    <View style={styles.container}>       
+       <Text style={styles.titre}>Merci de renseigner les champs suivants</Text>
+          <TextInput
+            placeholder='Lieu'          
+            style={styles.simpleInput}
+            />  
+        
+          <TextInput
+            placeholder='Sujet de la reuinion'
+            style={styles.simpleInput}
+            />
 
-      <OptionButton
-        icon="md-compass"
-        label="Read the React Navigation documentation"
-        onPress={() => WebBrowser.openBrowserAsync('https://reactnavigation.org')}
-      />
-
-      <OptionButton
-        icon="ios-chatboxes"
-        label="Ask a question on the forums"
-        onPress={() => WebBrowser.openBrowserAsync('https://forums.expo.io')}
-        isLastOption
-      />
-    </ScrollView>
-  );
-}
-
-function OptionButton({ icon, label, onPress, isLastOption }) {
-  return (
-    <RectButton style={[styles.option, isLastOption && styles.lastOption]} onPress={onPress}>
-      <View style={{ flexDirection: 'row' }}>
-        <View style={styles.optionIconContainer}>
-          <Ionicons name={icon} size={22} color="rgba(0,0,0,0.35)" />
-        </View>
-        <View style={styles.optionTextContainer}>
-          <Text style={styles.optionText}>{label}</Text>
-        </View>
+          
+          <TextInput
+            placeholder='liste des participants '
+            multiline = {true}
+            numberOfLines = {4}
+            style={styles.textAreaInput}
+            />    
+          <TouchableOpacity
+            style={styles.buttonSave}>
+            <Text>Enregistrer</Text>
+          </TouchableOpacity>
       </View>
-    </RectButton>
   );
-}
+}}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fafafa',
+    backgroundColor: '#fff',
+    alignItems: 'center',
   },
-  contentContainer: {
-    paddingTop: 15,
+  simpleInput: {
+    width: width - 40,
+    marginTop: 30,
+    borderRadius:7,
+    height: 40, 
+    borderColor: '#7f8c8d', 
+    paddingHorizontal: 10,
+    borderWidth: 1
   },
-  optionIconContainer: {
-    marginRight: 12,
+
+  buttonSave: {
+    marginTop:40,
+    backgroundColor: '#27ae60',
+    borderRadius: 20,
+    width: 100,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  option: {
-    backgroundColor: '#fdfdfd',
-    paddingHorizontal: 15,
-    paddingVertical: 15,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderBottomWidth: 0,
-    borderColor: '#ededed',
+  buttonDate: {
+    marginTop:10,
+    
+    borderRadius: 20,
+    width: 100,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  lastOption: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
+  textAreaInput: {
+    borderRadius:7,
+    width: width - 40,
+    marginTop: 30,
+    height: 100, 
+    borderColor: '#7f8c8d', 
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginBottom: 30
   },
-  optionText: {
-    fontSize: 15,
-    alignSelf: 'flex-start',
-    marginTop: 1,
+  titre: {
+    marginTop :50,
+    marginBottom: 40,
+    fontSize:20,
+   
   },
+  
 });
