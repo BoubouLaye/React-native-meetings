@@ -6,8 +6,6 @@ import Reuinions from './HomeScreen'
 
 var width = Dimensions.get('window').width; //full width
 
-
-
 export default class LinksScreen extends React.Component {
   constructor() {
     super()
@@ -78,15 +76,16 @@ export default class LinksScreen extends React.Component {
         />
 
         <TouchableOpacity
-          style={styles.buttonSave}>
+          style={styles.buttonSave}>           
           <Text style={styles.txtbutton}>Enregistrer</Text>
         </TouchableOpacity>
-
 
       </View>
     );
   }
 }
+
+
 
 
 
@@ -117,7 +116,8 @@ const styles = StyleSheet.create({
     width: 150,
     height: 50,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    
 
   },
   txtbutton: {

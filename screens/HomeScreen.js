@@ -71,7 +71,7 @@ function Item({ reunion }) {
       <Text style={styles.title}>{reunion.title}</Text>
       <Text style={styles.title}>Date : {reunion.date}</Text>
       <Text style={styles.title}>Salle : {reunion.salle}</Text>
-      <View style={{alignItems: 'flex-end',justifyContent:'center'}}>
+      <View style={{alignItems: 'flex-end'}}>
       <Icon
         name='delete'
         color='red'        
@@ -111,11 +111,7 @@ const Reuinions = [
     salle: '2',
     participants: ''
   },
-  {
-    id: '5',
-    title: 'mr gauthier',
-    date: '17 april 2020',
-    salle: '2',
-    participants: ''
-  },
+  
+   
 ];
+
